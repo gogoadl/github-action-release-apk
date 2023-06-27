@@ -1,1 +1,6 @@
-
+name: github-action-release-apk
+description: This is an action to release your apk to github release
+author: gogoadl
+branding:
+  icon: 'thumbs-up'
+  color: 'white'
