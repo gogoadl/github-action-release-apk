@@ -48,7 +48,8 @@ runs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       shell: bash
-    if: ${{ inputs.debug == true }}
+
+      if: ${{ inputs.debug == true }}
     - name: Build Debug APK
       run: ./gradlew assembleDebug
       shell: bash
@@ -57,7 +58,8 @@ runs:
       with:
         name: apk
         path: app/build/outputs/apk/debug/*.apk
-    if: ${{ inputs.debug == false }}
+        
+      if: ${{ inputs.debug == false }}
     - name: Build Release APK
       run: ./gradlew assembleRelease
       shell: bash
