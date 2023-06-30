@@ -6,10 +6,34 @@ branding:
   color: 'white'
 
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
+  asset-name:
+    description: 'file name display on releases'
+      required: false
+      default: "app.apk"
+  debug:  # id of input
+    description: 'release debug build'
+    required: false
+    default: true
+  base64-keystore:
+    description: 'decoded keystore file'
+    required: false
+    default: ''
+  key-file:
+    description: 'key file for signing apk'
+      required: false
+      default: ''
+  keystore-password:
+    description: 'Keytstore password for signing apk'
+      required: false
+      default: ''
+  keystore-alias:
+    description: 'Keystore alias for signing apk'
+      required: false
+      default: ''
+  key-password:
+    description: 'key password for signing apk'
+      required: false
+      default: ''
 
 runs:
   using: "composite"
@@ -24,6 +48,7 @@ runs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       shell: bash
+    if: ${{ inputs.debug == true }}
     - name: Build Debug APK
       run: ./gradlew assembleDebug
       shell: bash
@@ -32,3 +57,13 @@ runs:
       with:
         name: apk
         path: app/build/outputs/apk/debug/*.apk
+    if: ${{ inputs.debug == false }}
+    - name: Build Release APK
+      run: ./gradlew assembleRelease
+      shell: bash
+    - name: Upload Release APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: apk
+        path: app/build/outputs/apk/release/*.apk
+        
