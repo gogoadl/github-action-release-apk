@@ -58,8 +58,23 @@ runs:
       with:
         name: apk
         path: app/build/outputs/apk/debug/*.apk
-        
+
       if: ${{ inputs.debug == false }}
+    - name: Generate Keystore file from Github Secrets
+      run: |
+          echo "${{ inputs.base64-keystore }}" > ./keystore.b64
+          base64 -d -i ./keystore.b64 > ./${{ inputs.key-file }}
+          cp ./${{ inputs.key-file }} ./app/${{ inputs.key-file }}
+      shell: bash
+    - name: Build Release APK
+      run: |
+          bash ./gradlew assembleRelease \
+            -Pandroid.injected.signing.store.file=${{ inputs.key-file }} \
+            -Pandroid.injected.signing.store.password=${{ inputs.keystore-password }} \
+            -Pandroid.injected.signing.key.alias=${{ inputs.keystore-alias }} \
+            -Pandroid.injected.signing.key.password=${{ inputs.key-password }} \
+            --stacktrace
+      shell: bash
     - name: Build Release APK
       run: ./gradlew assembleRelease
       shell: bash
@@ -68,4 +83,28 @@ runs:
       with:
         name: apk
         path: app/build/outputs/apk/release/*.apk
+    - name: Download APK
+      uses: actions/download-artifact@v1
+      with:
+        name: ${{ inputs.asset-name }}
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }} 
+        draft: false
+        prerelease: false
+    - name: Upload Release APK
+      id: upload_release_asset
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./apk/app-release.apk
+        asset_name: ${{ inputs.asset-name }}
+        asset_content_type: application/vnd.android.package-archive
         
