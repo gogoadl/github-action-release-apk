@@ -2,7 +2,7 @@
 
 Github action to publish signed android APK file and make github releases automatically
 
-## Usage
+## ⌨️ Usage
 
 Follow the code below to use this workflow
 
