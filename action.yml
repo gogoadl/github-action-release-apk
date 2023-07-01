@@ -10,6 +10,9 @@ inputs:
     description: 'file name display on releases'
     required: false
     default: 'app.apk'
+  github-token:
+    description: 'token'
+    required: true
   base64-keystore:
     description: 'decoded keystore file'
     required: false
