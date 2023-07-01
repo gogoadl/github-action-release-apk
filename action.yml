@@ -6,10 +6,6 @@ branding:
   color: 'white'
 
 inputs:
-  version:
-    description: 'release version'
-    required: true
-    default: 'v1.0.0'
   asset-name:
     description: 'file name display on releases'
     required: false
@@ -68,7 +64,7 @@ runs:
           --stacktrace
       shell: bash
 
-    - name: Upload artifact APK
+    - name: Upload artifact Release APK
       uses: actions/upload-artifact@v3
       with:
         name: apk
