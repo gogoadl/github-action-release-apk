@@ -70,13 +70,13 @@ runs:
     - name: Upload artifact Release APK
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ inputs.asset-name }}
+        name: apk
         path: app/build/outputs/apk/release/*.apk
 
     - name: Download APK
       uses: actions/download-artifact@v1
       with:
-        name: ${{ inputs.asset-name }}
+        name: apk
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -95,6 +95,6 @@ runs:
         GITHUB_TOKEN: ${{ inputs.github-token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./apk/${{inputs.asset-name}}.apk
+        asset_path: ./apk/app-release.apk
         asset_name: ${{ inputs.asset-name }}
         asset_content_type: application/vnd.android.package-archive
