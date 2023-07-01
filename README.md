@@ -24,10 +24,11 @@ this workflow does the following.
 ``keystore-alias`` : keystore alias
 ``key-password`` : key password
 
-## How to make decoded keyStore
+## 🎸 How to make decoded keyStore
 
 wait a minute..
 
+## 🎮 Example
 
 ```
 name: Android CI
