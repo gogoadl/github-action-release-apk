@@ -9,7 +9,7 @@ Follow the code below to use this workflow
 this workflow does the following.
 
 + Always debug build, upload artifact when push or pull-request on main branch.
-+ Perform a release build, upload artifact and upload signed release apk on tags created in 'v1.\*.\*' format
++ Perform a release build, upload artifact and upload signed release apk on tags created in ``'v*.*.*'`` format
 + This workflow was used for projects
 [compose-cocktail-recipes](https://github.com/gogoadl/compose-cocktail-recipes)
 
