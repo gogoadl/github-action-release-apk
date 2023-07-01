@@ -95,6 +95,6 @@ runs:
         GITHUB_TOKEN: ${{ inputs.github-token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./apk/app-release.apk
+        asset_path: ./apk/${{inputs.asset-name}}.apk
         asset_name: ${{ inputs.asset-name }}
         asset_content_type: application/vnd.android.package-archive
