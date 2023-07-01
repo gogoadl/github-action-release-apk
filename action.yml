@@ -70,7 +70,7 @@ runs:
     - name: Upload artifact Release APK
       uses: actions/upload-artifact@v3
       with:
-        name: apk
+        name: ${{ inputs.asset-name }}
         path: app/build/outputs/apk/release/*.apk
 
     - name: Download APK
