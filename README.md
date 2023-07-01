@@ -1,6 +1,6 @@
 # github-action-release-apk
 
-Github action to publish signed android APK file and make github releases automatically
+Composite action to publish signed android APK file and make github releases automatically
 
 ## ⌨️ Usage
 
@@ -12,6 +12,22 @@ this workflow does the following.
 + Perform a release build, upload artifact and upload signed release apk on tags created in ``'v*.*.*'`` format
 + This workflow was used for projects
 [compose-cocktail-recipes](https://github.com/gogoadl/compose-cocktail-recipes)
+
+
+## 🎹 Inputs
+
+``asset-name`` : asset name
+``github-token`` : for using create github Releases and upload assets
+``base64-keystore`` : to signing apk on github action, you should make your base64 decoded keystore file
+``key-file`` : it is name that the keystore file
+``keystore-password`` : keystore password
+``keystore-alias`` : keystore alias
+``key-password`` : key password
+
+## How to make decoded keyStore
+
+wait a minute..
+
 
 ```
 name: Android CI
