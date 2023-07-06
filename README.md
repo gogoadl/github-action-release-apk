@@ -17,23 +17,36 @@ this workflow does the following.
 ## 🎹 Inputs
 
 ``asset-name`` : asset name
+
 ``github-token`` : for using create github Releases and upload assets
+
 ``base64-keystore`` : to signing apk on github action, you should make your base64 encoded keystore file
+
 ``key-file`` : it is name that the keystore file
+
 ``keystore-password`` : keystore password
+
 ``keystore-alias`` : keystore alias
+
 ``key-password`` : key password
 
 ## 🎸 How to make encoded keyStore
 
-first, generate keystore on your android app
+first, 
+generate keystore on your android app
+
 ``Android Studio > Build > Generate Signed Bundle or APK > APK > Create New or Choose Existing``
 
-second, base64 make encoded text file that your keystore file
+second, 
+base64 make encoded text file that your keystore file
+
 ``openssl base64 -in [keystore file] -out [text file name]``
 
-last, make your encoded text to github secrets!
+last,
+make your encoded text to github secrets!
+
 move to `` repository Settings > Security > Secrets and variables > Actions > New Repository Secrets ``
+
 copy your encoded text and paste to secrets body!  
 
 ## 🎮 Example
