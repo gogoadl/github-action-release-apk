@@ -24,9 +24,17 @@ this workflow does the following.
 ``keystore-alias`` : keystore alias
 ``key-password`` : key password
 
-## 🎸 How to make decoded keyStore
+## 🎸 How to make encoded keyStore
 
+first, generate keystore on your android app
+``Android Studio > Build > Generate Signed Bundle or APK > APK > Create New or Choose Existing``
 
+second, base64 make encoded text file that your keystore file
+``openssl base64 -in [keystore file] -out [text file name]``
+
+last, make your encoded text to github secrets!
+move to `` repository Settings > Security > Secrets and variables > Actions > New Repository Secrets ``
+copy your encoded text and paste to secrets body!  
 
 ## 🎮 Example
 
