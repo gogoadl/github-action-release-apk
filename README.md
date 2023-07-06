@@ -18,7 +18,7 @@ this workflow does the following.
 
 ``asset-name`` : asset name
 ``github-token`` : for using create github Releases and upload assets
-``base64-keystore`` : to signing apk on github action, you should make your base64 decoded keystore file
+``base64-keystore`` : to signing apk on github action, you should make your base64 encoded keystore file
 ``key-file`` : it is name that the keystore file
 ``keystore-password`` : keystore password
 ``keystore-alias`` : keystore alias
@@ -26,7 +26,7 @@ this workflow does the following.
 
 ## 🎸 How to make decoded keyStore
 
-wait a minute..
+
 
 ## 🎮 Example
 
